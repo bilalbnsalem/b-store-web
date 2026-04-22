@@ -1,0 +1,62 @@
+const products = [
+  {name:"Chemise Slim", category:"Chemise", size:"M", season:"Hiver", img:"https://i.imgur.com/8Km9tLL.jpg"},
+  {name:"Pantalon Noir", category:"Pantalon", size:"L", season:"Été", img:"https://i.imgur.com/5Aqgz7o.jpg"},
+  {name:"Robe Rouge", category:"Robe", size:"S", season:"Été", img:"https://i.imgur.com/2nCt3Sbl.jpg"},
+  {name:"Jupe Fleurie", category:"Jupe", size:"M", season:"Hiver", img:"https://i.imgur.com/3ZQ3Z4I.jpg"},
+];
+
+let activeCategory = null;
+let activeSizes = [];
+let activeSeasons = [];
+
+const grid = document.getElementById("products");
+const drawer = document.getElementById("drawer");
+
+document.getElementById("menuBtn").onclick = () => {
+  drawer.classList.toggle("open");
+};
+
+document.getElementById("searchInput").oninput = render;
+
+function setCategory(cat){
+  activeCategory = cat;
+  render();
+}
+
+function toggleSize(size){
+  activeSizes.includes(size)
+    ? activeSizes = activeSizes.filter(s => s !== size)
+    : activeSizes.push(size);
+  render();
+}
+
+function toggleSeason(season){
+  activeSeasons.includes(season)
+    ? activeSeasons = activeSeasons.filter(s => s !== season)
+    : activeSeasons.push(season);
+  render();
+}
+
+function render(){
+  const search = document.getElementById("searchInput").value.toLowerCase();
+
+  grid.innerHTML = "";
+  products
+    .filter(p =>
+      (!activeCategory || p.category === activeCategory) &&
+      (!activeSizes.length || activeSizes.includes(p.size)) &&
+      (!activeSeasons.length || activeSeasons.includes(p.season)) &&
+      p.name.toLowerCase().includes(search)
+    )
+    .forEach(p => {
+      grid.innerHTML += `
+        <div class="card">
+          <img src="${p.img}" />
+          <h4>${p.name}</h4>
+          <p>${p.category}</p>
+        </div>
+      `;
+    });
+}
+
+render();

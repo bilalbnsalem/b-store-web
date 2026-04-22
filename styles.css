@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: black;
+  color: white;
+}
+
+#searchInput {
+  margin-left: auto;
+  padding: 5px;
+}
+
+.drawer {
+  position: fixed;
+  left: -250px;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  background: white;
+  box-shadow: 2px 0 5px rgba(0,0,0,.3);
+  padding: 10px;
+  transition: .3s;
+}
+
+.drawer.open {
+  left: 0;
+}
+
+.drawer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.drawer li {
+  cursor: pointer;
+  margin: 8px 0;
+}
+
+.filters {
+  padding: 10px;
+  background: #fff;
+}
+
+.filters button {
+  margin: 5px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
+
+.card {
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}

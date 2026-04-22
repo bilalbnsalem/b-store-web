@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>B-Store</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <button id="menuBtn">☰</button>
+  <h1>B-Store</h1>
+  <input type="text" id="searchInput" placeholder="Rechercher un produit..."/>
+</header>
+
+<aside id="drawer" class="drawer">
+  <h3>Homme</h3>
+  <ul>
+    <li onclick="setCategory('Chemise')">Chemise</li>
+    <li onclick="setCategory('Pantalon')">Pantalon</li>
+  </ul>
+
+  <h3>Femme</h3>
+  <ul>
+    <li onclick="setCategory('Robe')">Robe</li>
+    <li onclick="setCategory('Jupe')">Jupe</li>
+  </ul>
+</aside>
+
+<section class="filters">
+  <h3>Filtres</h3>
+
+  <div>
+    <strong>Tailles</strong>
+    <button onclick="toggleSize('S')">S</button>
+    <button onclick="toggleSize('M')">M</button>
+    <button onclick="toggleSize('L')">L</button>
+  </div>
+
+  <div>
+    <strong>Saisons</strong>
+    <label><input type="checkbox" onchange="toggleSeason('Hiver')"/> Hiver</label>
+    <label><input type="checkbox" onchange="toggleSeason('Été')"/> Été</label>
+  </div>
+</section>
+
+<main id="products" class="grid"></main>
+
+<script src="script.js"></script>
+</body>
+</html>
